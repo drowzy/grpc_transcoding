@@ -9,7 +9,7 @@ defmodule GRPC.Transcoding.Protoc.Generator.Service do
   EEx.function_from_file(
     :defp,
     :service_template,
-    Path.expand("./templates/service.ex.eex", :code.priv_dir(:grpc_gateway)),
+    Path.expand("./templates/service.ex.eex", :code.priv_dir(:grpc_transcoding)),
     [:assigns]
   )
 

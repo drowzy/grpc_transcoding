@@ -1,12 +1,11 @@
-defmodule GRPC.Transcoding.MixProject do
+defmodule Greeter.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :grpc_transcoding,
+      app: :greeter,
       version: "0.1.0",
-      elixir: "~> 1.13",
-      escript: escript(),
+      elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -15,17 +14,17 @@ defmodule GRPC.Transcoding.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {Greeter.App, []}
     ]
-  end
-
-  def escript do
-    [main_module: GRPC.Transcoding.Protoc.CLI, name: "protoc-gen-grpc_transcoding_elixir"]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:grpc, path: "../../../grpc"},
+      {:grpc_transcoding, path: "../../"},
+      {:jason, "~> 1.0"},
       {:protobuf, github: "elixir-protobuf/protobuf"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
